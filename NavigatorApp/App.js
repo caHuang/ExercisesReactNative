@@ -9,14 +9,7 @@ class HomeScreen extends React.Component {
                 <Text>Home Screen</Text>
                 <Button 
                     title='Go to Details'
-                    onPress={() => {
-                        this.props.navigation.dispatch(StackActions.reset({
-                            index: 0,
-                            actions: [
-                                NavigationActions.navigate({ routeName: 'Details' })
-                            ],
-                        }))
-                    }}
+                    onPress={() => this.props.navigation.navigate('Details')}
                 />
             </View>
         );
@@ -28,6 +21,10 @@ class DetailsScreen extends React.Component {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>Details Screen</Text>
+                <Button
+                    title="Go to Details... again"
+                    onPress={() => this.props.navigation.push('Details')}
+                />
             </View>
         );
     }
@@ -44,4 +41,10 @@ const AppNavigator = createStackNavigator({
     initialRouteName: 'Home',
 });
 
-export default createAppContainer(AppNavigator);
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class App extends React.Component {
+    render() {
+        return <AppContainer />;
+    }
+}
