@@ -1,0 +1,9 @@
+platform :ios, '9.0'
+
+target 'TabNavigatorApp' do
+  pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
+  pod 'React', :path => '../node_modules/react-native', :subspecs => [
+    'RCTLinkingIOS',
+  ]
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+end
