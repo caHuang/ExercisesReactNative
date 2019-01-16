@@ -3,6 +3,10 @@ import { View, Text, Button } from 'react-native';
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'; 
 
 class HomeScreen extends React.Component {
+    static navigationOptions = {
+        title: 'Home'
+    }
+
     render() {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -20,6 +24,10 @@ class HomeScreen extends React.Component {
 }
 
 class DetailsScreen extends React.Component {
+    static navigationOptions = {
+        title: 'Details'
+    }
+
     render() {
         const { navigation } = this.props;
         const itemId = navigation.getParam('itemId', 'NO-ID');
