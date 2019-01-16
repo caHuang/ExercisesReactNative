@@ -4,8 +4,15 @@ import { createAppContainer, createStackNavigator, StackActions, NavigationActio
 
 class HomeScreen extends React.Component {
     static navigationOptions = {
-        title: 'Home'
-    }
+        title: 'Home',
+        headerStyle: {
+            backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
+    };
 
     render() {
         return (
@@ -24,9 +31,11 @@ class HomeScreen extends React.Component {
 }
 
 class DetailsScreen extends React.Component {
-    static navigationOptions = {
-        title: 'Details'
-    }
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: navigation.getParam('otherParam', 'A Nested Details Screen'),
+        };
+    };
 
     render() {
         const { navigation } = this.props;
@@ -43,6 +52,10 @@ class DetailsScreen extends React.Component {
                     onPress={() => this.props.navigation.push('Details', {
                         itemId: Math.floor(Math.random() * 100),
                     })}
+                />
+                <Button 
+                    title='Update the title'
+                    onPress={() => this.props.navigation.setParams({otherParam: 'Updated!'})}
                 />
                 <Button 
                     title='Go to Home'
